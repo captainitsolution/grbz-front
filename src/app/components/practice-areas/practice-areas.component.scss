@@ -1,0 +1,71 @@
+.areas {
+  background: var(--color-brand);
+  color: var(--color-cream);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    width: 100%;
+    height: 100%;
+    padding: var(--space-5);
+    border: 1px solid rgba(245, 245, 218, 0.22);
+    border-radius: var(--radius);
+    background: rgba(56, 19, 15, 0.35);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      transform var(--transition),
+      border-color var(--transition),
+      background-color var(--transition);
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 245, 218, 0.6);
+      background: rgba(56, 19, 15, 0.6);
+    }
+  }
+
+  /* A ilustração é um SVG usado como máscara, assim assume a cor do texto. */
+  &__illustration {
+    width: 5rem;
+    height: 5rem;
+    background: currentColor;
+    mask: var(--illustration) center / contain no-repeat;
+    -webkit-mask: var(--illustration) center / contain no-repeat;
+  }
+
+  &__name {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+  }
+
+  &__summary {
+    flex: 1;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}

@@ -1,125 +1,50 @@
 .contact {
-    padding: 8rem 0;
-    /* Increased padding for waves */
-    background: linear-gradient(135deg, var(--color-primary) 0%, #2a0e0b 100%);
-    /* Gradient */
+  background: var(--color-brand-dark);
+  color: var(--color-cream);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    height: 100%;
+    padding: var(--space-6) var(--space-5);
+    border: 1px solid rgba(245, 245, 218, 0.22);
+    border-radius: var(--radius);
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    overflow-wrap: anywhere;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition);
 
-    .custom-shape-divider-top-1678901234 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
+    &:hover {
+      border-color: rgba(245, 245, 218, 0.6);
+      background: rgba(245, 245, 218, 0.07);
     }
+  }
 
-    .custom-shape-divider-top-1678901234 svg {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 60px;
-    }
+  &__icon {
+    margin-bottom: var(--space-2);
+    font-size: 2rem;
+  }
 
-    .custom-shape-divider-top-1678901234 .shape-fill {
-        fill: #f9f9f9;
-    }
+  &__label {
+    font-size: var(--text-sm);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
 
-    .custom-shape-divider-bottom-1678901234 {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-    }
-
-    .custom-shape-divider-bottom-1678901234 svg {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 60px;
-    }
-
-    .custom-shape-divider-bottom-1678901234 .shape-fill {
-        fill: #f9f9f9;
-    }
-
-    .section-title {
-        font-size: 3rem;
-        font-family: var(--font-serif);
-        color: var(--color-text-light);
-        /* White text */
-        margin-bottom: 3rem;
-        position: relative;
-        z-index: 1;
-    }
-
-    .contact-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 1;
-
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            /* Increased gap for icon */
-            padding: 1rem 2.5rem;
-            background-color: #f9f9f9;
-            /* Match About section background */
-            color: var(--color-primary);
-            /* Wine text */
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-
-            &:hover {
-                background-color: var(--color-secondary);
-                /* Gold on hover */
-                color: var(--color-primary);
-                transform: translateY(-3px);
-                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            }
-
-            i {
-                font-size: 1.3rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .contact {
-        margin-top: -2px;
-        /* Overlap with About section to prevent gap */
-
-        .section-title {
-            font-size: 2.5rem;
-        }
-
-        .contact-buttons {
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-
-            .btn-contact {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-                margin: 0 auto;
-            }
-        }
-    }
+  &__value {
+    font-size: var(--text-base);
+  }
 }

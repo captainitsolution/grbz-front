@@ -1,52 +1,158 @@
+$breakpoint-desktop: 62rem;
+
+:host {
+  display: contents;
+}
+
 .header {
-    padding: 1.5rem 0;
-    position: relative;
-    z-index: 100;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  color: var(--color-cream);
+  background: linear-gradient(to bottom, rgba(56, 19, 15, 0.85), transparent);
+  transition:
+    background-color var(--transition),
+    box-shadow var(--transition);
 
-    .nav {
-        display: flex;
-        justify-content: center;
-        /* Center items */
-        align-items: center;
-        flex-wrap: wrap;
-        /* Allow wrapping */
-        gap: 12rem;
-        /* Reduced from 18rem to prevent wrapping */
+  &--solid {
+    background: var(--color-brand);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+  }
 
-        .nav-item {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            /* Increased font size */
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #E0C090;
-            cursor: pointer;
-            transition: color 0.3s ease;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
 
-            &:hover {
-                color: #fff;
-            }
-        }
+  &__logo img {
+    height: 2.75rem;
+    width: auto;
+  }
+
+  &__toggle {
+    display: inline-flex;
+    padding: var(--space-2);
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 1.75rem;
+    cursor: pointer;
+  }
+
+  &__nav {
+    position: absolute;
+    inset: var(--header-height) 0 auto;
+    display: none;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    background: var(--color-brand);
+
+    &--open {
+      display: flex;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-md);
+    opacity: 0.9;
+    transition:
+      opacity var(--transition),
+      background-color var(--transition);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__link {
+    font-size: var(--text-md);
+    letter-spacing: 0.03em;
+    opacity: 0.9;
+    transition: opacity var(--transition);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .header {
+    &__toggle {
+      display: none;
     }
 
-    /* Tablet / Intermediate screens */
-    @media (max-width: 1400px) {
-        .nav {
-            gap: 5rem;
-            /* Reduce gap to prevent overflow/zoom on tablets */
-        }
+    &__nav {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-6);
+      padding: 0;
+      background: none;
     }
 
-    /* Mobile screens */
-    @media (max-width: 768px) {
-        .nav {
-            gap: 1rem;
-            /* Small gap on mobile */
-
-            .nav-item {
-                font-size: 0.8rem;
-                /* Slightly smaller font on mobile */
-            }
-        }
+    &__links {
+      flex-direction: row;
+      gap: var(--space-5);
     }
+
+    &__link {
+      font-size: var(--text-base);
+    }
+
+    &__actions {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    /* No desktop o botão do Instagram vira um ícone circular; o texto fica só para leitores de tela. */
+    &__social {
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid rgba(245, 245, 218, 0.6);
+      border-radius: 50%;
+      font-size: 1.25rem;
+
+      &:hover {
+        background: rgba(245, 245, 218, 0.15);
+      }
+    }
+
+    &__social-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    &__cta {
+      padding: 0.7rem 1.25rem;
+    }
+  }
 }

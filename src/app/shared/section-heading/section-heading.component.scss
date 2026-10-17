@@ -1,0 +1,45 @@
+.heading {
+  max-width: 44rem;
+  margin: 0 auto var(--space-8);
+  text-align: center;
+  color: var(--color-brand);
+
+  &--on-dark {
+    color: var(--color-cream);
+  }
+
+  &__eyebrow {
+    margin: 0 0 var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  &__title {
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+  }
+
+  &__title::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin: var(--space-4) auto 0;
+    background: currentColor;
+    opacity: 0.45;
+  }
+
+  &__intro {
+    margin-top: var(--space-4);
+    font-size: var(--text-md);
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  &__intro:empty {
+    display: none;
+  }
+}

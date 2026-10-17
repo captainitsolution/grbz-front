@@ -1,0 +1,128 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  color: var(--color-cream);
+  background: var(--color-brand-dark);
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.9s ease,
+      visibility 0.9s;
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Película em marrom da marca para garantir contraste do texto sobre a foto. */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(56, 19, 15, 0.92) 15%, rgba(56, 19, 15, 0.55) 60%, rgba(56, 19, 15, 0.35));
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--header-height);
+    padding-bottom: 5rem;
+  }
+
+  &__eyebrow {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  &__title {
+    max-width: 18ch;
+    font-size: var(--text-hero);
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    max-width: 40rem;
+    margin-top: var(--space-5);
+    font-size: var(--text-md);
+    line-height: 1.7;
+    opacity: 0.92;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: var(--space-5);
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    transform: translateX(-50%);
+  }
+
+  &__arrow {
+    display: inline-flex;
+    padding: var(--space-2);
+    border: 1px solid rgba(245, 245, 218, 0.45);
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color var(--transition);
+
+    &:hover {
+      background: rgba(245, 245, 218, 0.15);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  &__dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    padding: 0;
+    border: 1px solid var(--color-cream);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition);
+
+    &--active {
+      background: var(--color-cream);
+    }
+  }
+}

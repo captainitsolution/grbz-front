@@ -1,0 +1,25 @@
+<section id="areas" class="section areas">
+  <div class="container">
+    <app-section-heading eyebrow="Atuação" title="Áreas de atuação" tone="on-dark">
+      Selecione uma área para conhecer como podemos ajudar.
+    </app-section-heading>
+
+    <ul class="areas__grid">
+      @for (area of areas; track area.id) {
+        <li>
+          <button class="areas__card" type="button" (click)="open(area)">
+            <span class="areas__illustration" [style.--illustration]="'url(' + area.illustration + ')'" aria-hidden="true"></span>
+            <span class="areas__name">{{ area.name }}</span>
+            <span class="areas__summary">{{ area.summary }}</span>
+            <span class="areas__more">
+              Saiba mais
+              <app-icon name="arrow-right" />
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <app-practice-area-dialog [area]="selectedArea()" (closed)="close()" />
+</section>

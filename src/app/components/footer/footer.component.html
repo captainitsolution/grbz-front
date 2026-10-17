@@ -1,31 +1,13 @@
 <footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <!--
-          SUGESTÃO: O caminho da imagem foi ajustado para a pasta 'assets',
-          que é o local padrão para arquivos estáticos no Angular.
-          Certifique-se de que a imagem esteja em 'src/assets/images/'.
-        -->
-        <img ngSrc="images/wgzb-logo-footer-v2.png" alt="WGBZ Advogadas Associadas" class="logo-img" width="150" height="68">
-      </div>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/wgbzadvogadas/" target="_blank" rel="noopener noreferrer"
-           class="social-btn">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        <!-- SUGESTÃO: Não se esqueça de adicionar o link do seu LinkedIn aqui -->
-        <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <!--
-        SUGESTÃO: O ano agora é dinâmico e será atualizado automaticamente
-        a cada virada de ano, usando a variável 'currentYear' do componente.
-      -->
-      <p>&copy; {{ currentYear }} WGBZ Advogadas. Todos os direitos reservados.</p>
+  <div class="container footer__inner">
+    <img class="footer__logo" src="images/brand/nomes-advogadas-creme.svg" [alt]="site.fullName" width="290" height="80" loading="lazy" />
+
+    <div class="footer__legal">
+      <p>&copy; {{ currentYear }} {{ site.name }}. Todos os direitos reservados.</p>
+      <p>
+        Este site tem caráter exclusivamente informativo, em conformidade com o Código de Ética e Disciplina e o
+        Provimento nº 205/2021 do Conselho Federal da OAB.
+      </p>
     </div>
   </div>
 </footer>

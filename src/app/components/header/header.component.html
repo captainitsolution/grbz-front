@@ -1,10 +1,49 @@
-<header class="header">
-    <div class="container">
-        <nav class="nav">
-            <div class="nav-item">WIOREK</div>
-            <div class="nav-item">GUERINO</div>
-            <div class="nav-item">BREDA</div>
-            <div class="nav-item">ZUCCOLOTTO</div>
-        </nav>
-    </div>
+<header class="header" [class.header--solid]="isScrolled() || isMenuOpen()">
+  <div class="container header__inner">
+    <a class="header__logo" href="#inicio" (click)="closeMenu()">
+      <img
+        src="images/brand/grbz-advogadas-creme.svg"
+        [alt]="siteName + ' - ir para o início'"
+        width="110"
+        height="44"
+      />
+    </a>
+
+    <button
+      class="header__toggle"
+      type="button"
+      aria-controls="main-nav"
+      [attr.aria-expanded]="isMenuOpen()"
+      [attr.aria-label]="isMenuOpen() ? 'Fechar menu' : 'Abrir menu'"
+      (click)="toggleMenu()"
+    >
+      <app-icon [name]="isMenuOpen() ? 'close' : 'menu'" />
+    </button>
+
+    <nav id="main-nav" class="header__nav" [class.header__nav--open]="isMenuOpen()" aria-label="Navegação principal">
+      <ul class="header__links">
+        @for (link of navLinks; track link.href) {
+          <li>
+            <a class="header__link" [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+      <div class="header__actions">
+        <a
+          class="header__social"
+          [href]="instagramUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Siga-nos no Instagram"
+        >
+          <app-icon name="instagram" />
+          <span class="header__social-label">Siga-nos no Instagram</span>
+        </a>
+        <a class="btn btn--light header__cta" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+          <app-icon name="whatsapp" />
+          Fale conosco
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
