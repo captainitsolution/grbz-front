@@ -35,7 +35,7 @@ export const PRACTICE_AREAS: readonly PracticeArea[] = [
     illustration: 'images/areas/penal.svg',
     summary: 'Defesa técnica em todas as fases da persecução penal.',
     description:
-      'Acompanhamos investigações e processos criminais com atenção às garantias constitucionais e ao sigilo profissional.',
+      'Acompanhamos investigações e processos criminais, da fase policial ao julgamento, com atenção às garantias constitucionais e ao sigilo profissional.',
     topics: [
       'Acompanhamento em delegacias e inquéritos',
       'Defesa em ações penais e no tribunal do júri',
