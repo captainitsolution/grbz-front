@@ -1,0 +1,63 @@
+<section
+  id="inicio"
+  class="hero"
+  aria-roledescription="carrossel"
+  aria-label="Destaques do escritório"
+  (mouseenter)="pause()"
+  (mouseleave)="resume()"
+  (focusin)="pause()"
+  (focusout)="resume()"
+>
+  @for (slide of slides; track slide.title; let index = $index) {
+    <article
+      class="hero__slide"
+      [class.hero__slide--active]="index === currentIndex()"
+      [attr.aria-hidden]="index !== currentIndex()"
+      [attr.inert]="index !== currentIndex() ? '' : null"
+    >
+      <img
+        class="hero__image"
+        [src]="slide.image"
+        [alt]="slide.imageAlt"
+        [attr.loading]="index === 0 ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="index === 0 ? 'high' : null"
+      />
+      <div class="container hero__content">
+        <p class="hero__eyebrow">{{ slide.eyebrow }}</p>
+        <h1 class="hero__title">{{ slide.title }}</h1>
+        <p class="hero__subtitle">{{ slide.subtitle }}</p>
+        <div class="hero__actions">
+          <a class="btn btn--light" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+            <app-icon name="whatsapp" />
+            Falar com uma advogada
+          </a>
+          <a class="btn btn--outline-light" href="#areas">
+            Áreas de atuação
+            <app-icon name="arrow-right" />
+          </a>
+        </div>
+      </div>
+    </article>
+  }
+
+  <div class="hero__controls" aria-live="off">
+    <button class="hero__arrow" type="button" aria-label="Slide anterior" (click)="previous()">
+      <app-icon name="chevron-left" />
+    </button>
+    <div class="hero__dots">
+      @for (slide of slides; track slide.title; let index = $index) {
+        <button
+          class="hero__dot"
+          type="button"
+          [class.hero__dot--active]="index === currentIndex()"
+          [attr.aria-label]="'Ir para o slide ' + (index + 1)"
+          [attr.aria-current]="index === currentIndex()"
+          (click)="goTo(index)"
+        ></button>
+      }
+    </div>
+    <button class="hero__arrow" type="button" aria-label="Próximo slide" (click)="next()">
+      <app-icon name="chevron-right" />
+    </button>
+  </div>
+</section>

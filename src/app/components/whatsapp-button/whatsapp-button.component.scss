@@ -1,0 +1,18 @@
+.whatsapp-button {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 90;
+  display: inline-flex;
+  padding: 0.9rem;
+  border-radius: 50%;
+  background: var(--color-whatsapp);
+  color: #fff;
+  font-size: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition);
+
+  &:hover {
+    transform: scale(1.08);
+  }
+}

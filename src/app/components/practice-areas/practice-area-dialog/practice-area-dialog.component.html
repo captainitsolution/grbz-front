@@ -1,0 +1,26 @@
+<dialog #dialog class="dialog" aria-labelledby="area-dialog-title" (close)="onDialogClosed()" (click)="onDialogClick($event)">
+  @if (area(); as area) {
+    <div class="dialog__panel">
+      <button class="dialog__close" type="button" aria-label="Fechar" (click)="close()">
+        <app-icon name="close" />
+      </button>
+
+      <span class="dialog__illustration" [style.--illustration]="'url(' + area.illustration + ')'" aria-hidden="true"></span>
+      <h3 id="area-dialog-title" class="dialog__title">{{ area.name }}</h3>
+      <p class="dialog__description">{{ area.description }}</p>
+
+      <h4 class="dialog__subtitle">Como podemos ajudar</h4>
+      <ul class="dialog__topics">
+        @for (topic of area.topics; track topic) {
+          <li>{{ topic }}</li>
+        }
+      </ul>
+
+      <a class="btn btn--brand dialog__cta" [href]="whatsappUrlFor(area)" target="_blank" rel="noopener noreferrer">
+        <app-icon name="whatsapp" />
+        Conversar sobre {{ area.name }}
+      </a>
+      <p class="dialog__note">O atendimento é realizado mediante análise individual de cada caso.</p>
+    </div>
+  }
+</dialog>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wgzb-front": {
+    "grbz-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/wgzb-front",
+            "outputPath": "dist/grbz-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -32,6 +32,10 @@
               }
             ],
             "styles": [
+              "@fontsource-variable/lora/wght.css",
+              "@fontsource-variable/lora/wght-italic.css",
+              "@fontsource/roboto/400.css",
+              "@fontsource/roboto/500.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -64,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wgzb-front:build:production"
+              "buildTarget": "grbz-front:build:production"
             },
             "development": {
-              "buildTarget": "wgzb-front:build:development"
+              "buildTarget": "grbz-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,9 +95,14 @@
               }
             ],
             "styles": [
+              "@fontsource-variable/lora/wght.css",
+              "@fontsource-variable/lora/wght-italic.css",
+              "@fontsource/roboto/400.css",
+              "@fontsource/roboto/500.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }

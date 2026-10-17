@@ -1,13 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tokens, base e utilitários globais. Estilos específicos ficam em cada componente. */
+
 :root {
-  --color-primary: #3E1410;
-  /* Deep Maroon from image */
-  --color-secondary: #E8C778;
-  /* Gold/Yellow from warning icon */
-  --color-text-light: #F5F5F5;
-  --color-text-dark: #333333;
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Lato', sans-serif;
+  /* Paleta da identidade visual GRBZ */
+  --color-brand: #56160d;
+  --color-brand-dark: #38130f;
+  --color-brand-light: #731d12;
+  --color-cream: #f5f5da;
+  --color-ivory: #fbfaee;
+  --color-text: #2e1b17;
+  --color-text-muted: #6b5a55;
+  --color-whatsapp: #1fa855;
+
+  /* Tipografia */
+  --font-serif: 'Lora Variable', Georgia, serif;
+  --font-sans: 'Roboto', system-ui, sans-serif;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem);
+  --text-hero: clamp(2rem, 1.2rem + 3.6vw, 3.75rem);
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 7rem);
+
+  /* Forma e movimento */
+  --radius: 0.5rem;
+  --shadow-card: 0 12px 32px rgba(56, 19, 15, 0.14);
+  --transition: 0.25s ease;
+  --header-height: 4.5rem;
 }
 
 *,
@@ -16,47 +46,120 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  overflow-x: hidden;
-  position: relative;
-  /* Ensure overflow hidden works */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  padding: 0;
   font-family: var(--font-sans);
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-ivory);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Impede a rolagem da página enquanto um diálogo modal está aberto. */
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
+  margin: 0;
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 500;
+}
+
+p {
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.3s ease;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-a:hover {
-  opacity: 0.8;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--space-5);
+}
+
+.section {
+  padding: var(--space-section) 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font: 500 var(--text-base) / 1 var(--font-sans);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+
+  &--light {
+    background: var(--color-cream);
+    color: var(--color-brand);
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  &--outline-light {
+    border-color: rgba(245, 245, 218, 0.6);
+    color: var(--color-cream);
+
+    &:hover {
+      background: rgba(245, 245, 218, 0.12);
+    }
+  }
+
+  &--brand {
+    background: var(--color-brand);
+    color: var(--color-cream);
+
+    &:hover {
+      background: var(--color-brand-light);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

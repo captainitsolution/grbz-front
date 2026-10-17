@@ -1,0 +1,20 @@
+<section id="advogadas" class="section team">
+  <div class="container">
+    <app-section-heading eyebrow="Quem somos" title="Nossas advogadas">
+      Um escritório formado por mulheres, que une experiência técnica e atendimento humanizado para buscar a melhor
+      estratégia na defesa dos interesses de cada cliente.
+    </app-section-heading>
+
+    <ul class="team__grid">
+      @for (lawyer of lawyers; track lawyer.name) {
+        <li class="team__card">
+          <img class="team__photo" [src]="lawyer.photo" [alt]="'Retrato de ' + lawyer.name" loading="lazy" width="400" height="400" />
+          <div class="team__caption">
+            <h3 class="team__name">{{ lawyer.name }}</h3>
+            <p class="team__role">{{ lawyer.role }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
