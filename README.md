@@ -2,6 +2,8 @@
 
 Site institucional do escritório **GRBZ Advogadas Associadas** (Guerino Rodrigues Breda Zuccolotto), de Aracruz - ES.
 
+**No ar em:** <https://grbzadvogadas.com.br>
+
 ## Sumário
 
 1. [Sobre o projeto](#sobre-o-projeto)
@@ -171,14 +173,20 @@ Se for a primeira publicação, siga os passos:
 
 1. Crie uma conta na Cloudflare e, em **Workers & Pages → Create → Pages → Direct Upload**, crie um projeto
    (ex.: `grbz-advogadas`).
-2. Em **My Profile → API Tokens**, crie um token com a permissão *Cloudflare Pages: Edit*.
-3. No GitHub, em **Settings → Secrets and variables → Actions**, cadastre:
+2. **Branch de produção:** projetos criados por Direct Upload nascem com `main` como branch de produção, e o deploy do
+   workflow usa `--branch=master`. Sem ajuste, ele sai como *Preview* e o endereço principal não atualiza. Só dá para
+   trocar pela API (uma única vez), com um token da Cloudflare:
+   `PATCH https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/pages/projects/<PROJETO>` com o corpo
+   `{"production_branch":"master"}`.
+3. Em **My Profile → API Tokens**, crie um token com a permissão *Cloudflare Pages: Edit*.
+4. No GitHub, em **Settings → Secrets and variables → Actions**, cadastre:
    - Secrets: `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`
    - Variable: `CLOUDFLARE_PAGES_PROJECT` (nome do projeto criado no passo 1)
-4. Em **Settings → Environments**, crie o ambiente `production` (opcionalmente exigindo aprovação antes do deploy).
-5. **Domínio `.com.br`:** registre no [Registro.br](https://registro.br) (em nome da titular do escritório), adicione o
+5. Em **Settings → Environments**, crie o ambiente `production` (opcionalmente exigindo aprovação antes do deploy).
+6. **Domínio `.com.br`:** registre no [Registro.br](https://registro.br) (em nome da titular do escritório), adicione o
    domínio na Cloudflare (plano Free), troque os servidores DNS no Registro.br pelos indicados pela Cloudflare e, no
-   projeto do Pages, vá em **Custom domains** para associá-lo. O HTTPS é emitido automaticamente.
+   projeto do Pages, vá em **Custom domains** para associá-lo (o domínio e o `www`). O HTTPS é emitido automaticamente.
+   O domínio em uso é `grbzadvogadas.com.br`, registrado no Registro.br e com DNS na Cloudflare.
 
 ### Publicação manual (emergência)
 
@@ -209,7 +217,7 @@ npx wrangler pages deploy dist/grbz-front/browser --project-name=<nome-do-projet
 
 ## Pendências conhecidas
 
-- Depois que o domínio estiver definido: adicionar `<link rel="canonical">`, `og:url`, `og:image` (com URL absoluta;
-  a imagem já existe em `public/images/brand/og-image.jpg`) e um `sitemap.xml` ao `index.html`/`public/`, e cadastrar
-  o site no Google Search Console.
+- Criar na Cloudflare a regra de redirecionamento de `www.grbzadvogadas.com.br` para `grbzadvogadas.com.br`
+  (*Rules → Redirect Rules*). Enquanto isso, o `canonical` do `index.html` já aponta para o endereço sem `www`.
+- Cadastrar o site no Google Search Console, enviar o `sitemap.xml` e criar o Perfil da Empresa no Google.
 - Confirmar o enquadramento das fotos das advogadas em telas muito pequenas.
